@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "osu_Game", "osu!_Game\osu!_Game.csproj", "{6C75A817-8CE8-4563-BF41-FD3356846DCE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C75A817-8CE8-4563-BF41-FD3356846DCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C75A817-8CE8-4563-BF41-FD3356846DCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C75A817-8CE8-4563-BF41-FD3356846DCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C75A817-8CE8-4563-BF41-FD3356846DCE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0F78F2F-A3A8-4A1D-8EEF-085D567AD27F}
+	EndGlobalSection
+EndGlobal
