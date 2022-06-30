@@ -2,20 +2,20 @@
 {
     public abstract class cDifficulty
     {
-        public void mSetSize(float aCircle_size)
+        public void SetSize(float aCircleSize)
         {
-            var v = 70 - 5 * aCircle_size;
+            var v = 70 - 5 * aCircleSize;
         }
 
-        public void mSetTimeSpan(double aApproach_rate)
+        public void SetTimeSpan(double aApproachRate)
         {
-            if (aApproach_rate <= 4 && aApproach_rate >= 0)
+            if (aApproachRate <= 4 && aApproachRate >= 0)
             {
-                var v = 1800 - 120 * aApproach_rate;
+                var v = 1800 - 120 * aApproachRate;
             }
-            else if (aApproach_rate > 4 && aApproach_rate <= 11)
+            else if (aApproachRate > 4 && aApproachRate <= 11)
             {
-                var v = 1200 - 150 * (aApproach_rate - 5);
+                var v = 1200 - 150 * (aApproachRate - 5);
             }
         }
     }
