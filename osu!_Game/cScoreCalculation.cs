@@ -11,7 +11,7 @@
         private int mCombo { get; }
 
         private int mHit { get; }
-        
+
         public static int operator +(cScoreCalculation aComboHit, int aScore)
         {
             aScore += aComboHit.mHit + aComboHit.mHit / 10 * (aComboHit.mCombo - 1);

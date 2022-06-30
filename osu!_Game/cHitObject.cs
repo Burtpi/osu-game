@@ -1,4 +1,5 @@
-﻿namespace osu__Game
+﻿
+namespace osu__Game
 {
     public class cHitObject : cObject
     {
@@ -18,34 +19,31 @@
         {
         }
 
-        ~cHitObject()
+        public void SetSizeHb(float aCircleSize)
         {
+            mCircle.SetSize(aCircleSize);
+            mApproachCircle.SetSize(aCircleSize);
+            SetSize(aCircleSize);
         }
 
-        public void mSetSizeHb(float aCircle_size)
+        public void SetTimeSpanHb(double aApproachRate)
         {
-            mCircle.mSetSize(aCircle_size);
-            mApproachCircle.mSetSize(aCircle_size);
-            mSetSize(aCircle_size);
+            mCircle.SetTimeSpan(aApproachRate);
+            mApproachCircle.SetTimeSpan(aApproachRate);
+            SetTimeSpan(aApproachRate);
         }
 
-        public void mSetTimeSpanHb(double aApproach_rate)
+        public void CreateObject(double aTime)
         {
-            mCircle.mSetTimeSpan(aApproach_rate);
-            mApproachCircle.mSetTimeSpan(aApproach_rate);
-            mSetTimeSpan(aApproach_rate);
+            mCircle.Create(mCircle.BufferC());
+            mApproachCircle.Create(mApproachCircle.BufferAc(aTime));
         }
+        
 
-        public void mCreateObject(double aTime)
+        public override void DrawObject()
         {
-            mCircle.mCreate(mCircle.mBufferC());
-            mApproachCircle.mCreate(mApproachCircle.mBufferAc(aTime));
-        }
-
-        public override void mDrawObject()
-        {
-            mCircle.mDraw();
-            mApproachCircle.mDraw();
+            mCircle.Draw();
+            mApproachCircle.Draw();
         }
     }
 }

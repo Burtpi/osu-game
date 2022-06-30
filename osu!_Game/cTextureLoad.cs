@@ -7,7 +7,7 @@ namespace osu__Game
 {
     public abstract class cTextureLoad
     {
-        public static void mLoad(string aPath)
+        public static void Load(string aPath)
         {
             aPath = "Graphics/" + aPath;
             var bmp = new Bitmap(aPath);
@@ -19,9 +19,9 @@ namespace osu__Game
                 OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, graphicData.Scan0);
             bmp.UnlockBits(graphicData);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter,
-                (int) TextureMinFilter.Linear);
+                (int)TextureMinFilter.Linear);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter,
-                (int) TextureMagFilter.Linear);
+                (int)TextureMagFilter.Linear);
         }
     }
 }

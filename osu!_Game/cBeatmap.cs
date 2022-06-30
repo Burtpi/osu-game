@@ -2,11 +2,11 @@
 {
     public class cBeatmap
     {
-        public readonly int mLength;
+        public readonly int Length;
 
         public cBeatmap(int aMapLength)
         {
-            mLength = aMapLength;
+            Length = aMapLength;
         }
     }
 }

@@ -14,11 +14,7 @@ namespace osu__Game
             mHover = false;
         }
 
-        ~cCircle()
-        {
-        }
-
-        public Vector2[] mBufferC()
+        public Vector2[] BufferC()
         {
             var circleVert = new[]
             {
@@ -30,16 +26,16 @@ namespace osu__Game
             return circleVert;
         }
 
-        public override void mDraw()
+        public override void Draw()
         {
             GL.Enable(EnableCap.Blend);
             GL.Enable(EnableCap.Texture2D);
-            GL.BlendFunc((BlendingFactor) BlendingFactorSrc.SrcAlpha,
-                (BlendingFactor) BlendingFactorDest.OneMinusSrcAlpha);
+            GL.BlendFunc((BlendingFactor)BlendingFactorSrc.SrcAlpha,
+                (BlendingFactor)BlendingFactorDest.OneMinusSrcAlpha);
             GL.BindTexture(TextureTarget.Texture2D, 1);
             GL.EnableClientState(ArrayCap.VertexArray);
             GL.EnableClientState(ArrayCap.TextureCoordArray);
-            GL.BindBuffer(BufferTarget.ArrayBuffer, mVbo);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, Vbo);
             GL.VertexPointer(2, VertexPointerType.Float, Vector2.SizeInBytes * 2, 0);
             GL.TexCoordPointer(2, TexCoordPointerType.Float, Vector2.SizeInBytes * 2, Vector2.SizeInBytes);
             GL.Color3(Color.White);

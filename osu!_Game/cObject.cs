@@ -7,8 +7,9 @@ namespace osu__Game
 {
     public abstract class cObject : IDisposable
     {
+        private static int _count;
         private bool mIsCreated;
-        protected int mVbo;
+        protected int Vbo;
         public float mX { get; protected set; }
         public float mY { get; protected set; }
         public double mTime { get; protected set; }
@@ -17,7 +18,6 @@ namespace osu__Game
         public float mSize { get; private set; }
         public double mTimeSpan { get; private set; }
         protected int mVertCount { get; private set; }
-        private static int mCount = 0;
 
         public void Dispose()
         {
@@ -25,65 +25,66 @@ namespace osu__Game
             GC.SuppressFinalize(this);
         }
 
-        public void mSetSize(float aCircle_size)
+        public void SetSize(float aCircleSize)
         {
-            var v = 70 - 5 * aCircle_size;
+            var v = 70 - 5 * aCircleSize;
             mSize = 2.5f * v;
         }
 
-        public void mSetTimeSpan(double aApproach_rate)
+        public void SetTimeSpan(double aApproachRate)
         {
-            if (aApproach_rate <= 4 && aApproach_rate >= 0)
+            if (aApproachRate <= 4 && aApproachRate >= 0)
             {
-                var v = 1800 - 120 * aApproach_rate;
+                var v = 1800 - 120 * aApproachRate;
                 mTimeSpan = v;
             }
-            else if (aApproach_rate > 4 && aApproach_rate <= 11)
+            else if (aApproachRate > 4 && aApproachRate <= 11)
             {
-                var v = 1200 - 150 * (aApproach_rate - 5);
+                var v = 1200 - 150 * (aApproachRate - 5);
                 mTimeSpan = v;
             }
         }
+
         public static int operator -(cObject aObject)
         {
-            
             aObject.Dispose();
-            mCount++;
-            return mCount;
+            _count++;
+            return _count;
         }
-        public void mIsVisible(double aTimer)
+
+        public void IsVisible(double aTimer)
         {
             mVisible = aTimer >= mTime - mTimeSpan && aTimer <= mTime;
         }
 
-        public void mCreate(Vector2[] aVertices)
+        public void Create(Vector2[] aVertices)
         {
             mVertCount = aVertices.Length;
 
-            mVbo = GL.GenBuffer();
-            GL.BindBuffer(BufferTarget.ArrayBuffer, mVbo);
-            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr) (Vector2.SizeInBytes * mVertCount), aVertices,
+            Vbo = GL.GenBuffer();
+            GL.BindBuffer(BufferTarget.ArrayBuffer, Vbo);
+            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(Vector2.SizeInBytes * mVertCount), aVertices,
                 BufferUsageHint.StreamDraw);
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
             GL.BindTexture(TextureTarget.Texture2D, 0);
             mIsCreated = true;
         }
 
-        public virtual void mDrawObject()
+        public virtual void DrawObject()
         {
-            mDraw();
+            Draw();
         }
 
-        public virtual void mDraw()
+        public virtual void Draw()
         {
             GL.Enable(EnableCap.Blend);
             GL.Enable(EnableCap.Texture2D);
-            GL.BlendFunc((BlendingFactor) BlendingFactorSrc.SrcAlpha,
-                (BlendingFactor) BlendingFactorDest.OneMinusSrcAlpha);
+            GL.BlendFunc((BlendingFactor)BlendingFactorSrc.SrcAlpha,
+                (BlendingFactor)BlendingFactorDest.OneMinusSrcAlpha);
             GL.BindTexture(TextureTarget.Texture2D, 0);
             GL.EnableClientState(ArrayCap.VertexArray);
             GL.EnableClientState(ArrayCap.TextureCoordArray);
-            GL.BindBuffer(BufferTarget.ArrayBuffer, mVbo);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, Vbo);
             GL.VertexPointer(2, VertexPointerType.Float, Vector2.SizeInBytes * 2, 0);
             GL.TexCoordPointer(2, TexCoordPointerType.Float, Vector2.SizeInBytes * 2, Vector2.SizeInBytes);
             GL.Color3(Color.White);
@@ -96,7 +97,7 @@ namespace osu__Game
         {
             if (!aShouldDispose) return;
             if (!mIsCreated) return;
-            GL.DeleteBuffer(mVbo);
+            GL.DeleteBuffer(Vbo);
             mIsCreated = false;
         }
     }
