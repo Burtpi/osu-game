@@ -15,14 +15,10 @@ namespace osu__Game
             mTime = aTime;
         }
 
-        ~cApproachCircle()
-        {
-        }
-
-        public Vector2[] mBufferAc(double aTime)
+        public Vector2[] BufferAc(double aTime)
         {
             mTimeNow += aTime * 1000;
-            var size = (float) ((mTimeSpan - mTimeNow) / mTimeSpan * 2 + 1) * mSize;
+            var size = (float)((mTimeSpan - mTimeNow) / mTimeSpan * 2 + 1) * mSize;
             var ac = new[]
             {
                 new Vector2(mX - size / 2, mY - size / 2), new Vector2(0, 0),
@@ -33,16 +29,16 @@ namespace osu__Game
             return ac;
         }
 
-        public override void mDraw()
+        public override void Draw()
         {
             GL.Enable(EnableCap.Blend);
             GL.Enable(EnableCap.Texture2D);
-            GL.BlendFunc((BlendingFactor) BlendingFactorSrc.SrcAlpha,
-                (BlendingFactor) BlendingFactorDest.OneMinusSrcAlpha);
+            GL.BlendFunc((BlendingFactor)BlendingFactorSrc.SrcAlpha,
+                (BlendingFactor)BlendingFactorDest.OneMinusSrcAlpha);
             GL.BindTexture(TextureTarget.Texture2D, 2);
             GL.EnableClientState(ArrayCap.VertexArray);
             GL.EnableClientState(ArrayCap.TextureCoordArray);
-            GL.BindBuffer(BufferTarget.ArrayBuffer, mVbo);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, Vbo);
             GL.VertexPointer(2, VertexPointerType.Float, Vector2.SizeInBytes * 2, 0);
             GL.TexCoordPointer(2, TexCoordPointerType.Float, Vector2.SizeInBytes * 2, Vector2.SizeInBytes);
             GL.Color3(Color.White);

@@ -6,23 +6,19 @@ namespace osu__Game
 {
     public class cText : cObject
     {
-        public readonly int mValue;
+        public readonly int Value;
 
         public cText(float aX, float aY, int aValue)
         {
             mX = aX;
             mY = aY;
-            mValue = aValue;
+            Value = aValue;
         }
 
-        ~cText()
+        public Vector2[] BufferText(int aWidth, int i)
         {
-        }
-
-        public Vector2[] mBufferText(int aWidth, int i)
-        {
-            var offset1 = (float) (0.1 * i);
-            var offset2 = (float) (0.1 * (i + 1));
+            var offset1 = (float)(0.1 * i);
+            var offset2 = (float)(0.1 * (i + 1));
             var textVert = new[]
             {
                 new Vector2(mX, mY), new Vector2(offset1, 0),
@@ -32,17 +28,17 @@ namespace osu__Game
             };
             return textVert;
         }
-        
-        public override void mDraw()
+
+        public override void Draw()
         {
             GL.Enable(EnableCap.Blend);
             GL.Enable(EnableCap.Texture2D);
-            GL.BlendFunc((BlendingFactor) BlendingFactorSrc.SrcAlpha,
-                (BlendingFactor) BlendingFactorDest.OneMinusSrcAlpha);
+            GL.BlendFunc((BlendingFactor)BlendingFactorSrc.SrcAlpha,
+                (BlendingFactor)BlendingFactorDest.OneMinusSrcAlpha);
             GL.BindTexture(TextureTarget.Texture2D, 7);
             GL.EnableClientState(ArrayCap.VertexArray);
             GL.EnableClientState(ArrayCap.TextureCoordArray);
-            GL.BindBuffer(BufferTarget.ArrayBuffer, mVbo);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, Vbo);
             GL.VertexPointer(2, VertexPointerType.Float, Vector2.SizeInBytes * 2, 0);
             GL.TexCoordPointer(2, TexCoordPointerType.Float, Vector2.SizeInBytes * 2, Vector2.SizeInBytes);
             GL.Color3(Color.White);

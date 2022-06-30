@@ -2,7 +2,7 @@
 
 namespace osu__Game
 {
-    internal static class Program
+    internal static class cProgram
     {
         private static void Main()
         {
