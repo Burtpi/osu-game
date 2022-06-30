@@ -1,0 +1,80 @@
+osu file format v14
+
+[General]
+AudioFilename: audio.mp3
+AudioLeadIn: 0
+PreviewTime: -1
+Countdown: 0
+SampleSet: Soft
+StackLeniency: 0.7
+Mode: 0
+LetterboxInBreaks: 0
+WidescreenStoryboard: 0
+
+[Editor]
+DistanceSpacing: 1.2
+BeatDivisor: 4
+GridSize: 32
+TimelineZoom: 1
+
+[Metadata]
+Title:Undertale OST- 002 - Start Menu
+TitleUnicode:Undertale OST- 002 - Start Menu
+Artist:Toby Fox
+ArtistUnicode:Toby Fox
+Creator:Burtpi
+Version:Normal
+Source:
+Tags:
+BeatmapID:0
+BeatmapSetID:-1
+
+[Difficulty]
+HPDrainRate:5
+CircleSize:5
+OverallDifficulty:5
+ApproachRate:5
+SliderMultiplier:1.4
+SliderTickRate:1
+
+[Events]
+//Background and Video events
+//Break Periods
+//Storyboard Layer 0 (Background)
+//Storyboard Layer 1 (Fail)
+//Storyboard Layer 2 (Pass)
+//Storyboard Layer 3 (Foreground)
+//Storyboard Layer 4 (Overlay)
+//Storyboard Sound Samples
+
+[TimingPoints]
+90,666.666666666667,4,2,1,40,1,0
+
+
+[HitObjects]
+95,96,90,1,0,0:0:0:0:
+256,96,756,1,0,0:0:0:0:
+384,96,1256,1,0,0:0:0:0:
+384,288,2756,1,0,0:0:0:0:
+224,288,3423,1,0,0:0:0:0:
+96,288,3923,1,0,0:0:0:0:
+416,96,5423,1,0,0:0:0:0:
+256,32,6089,1,0,0:0:0:0:
+256,160,6589,1,0,0:0:0:0:
+96,160,7256,1,0,0:0:0:0:
+320,160,8089,1,0,0:0:0:0:
+256,320,8756,1,0,0:0:0:0:
+352,224,9256,1,0,0:0:0:0:
+32,32,10756,1,0,0:0:0:0:
+192,32,11423,1,0,0:0:0:0:
+320,32,11923,1,0,0:0:0:0:
+320,352,13423,1,0,0:0:0:0:
+160,352,14090,1,0,0:0:0:0:
+160,224,14590,1,0,0:0:0:0:
+480,32,16089,1,0,0:0:0:0:
+352,160,16756,1,0,0:0:0:0:
+256,256,17256,1,0,0:0:0:0:
+96,256,17923,1,0,0:0:0:0:
+256,128,18756,1,0,0:0:0:0:
+256,320,19423,1,0,0:0:0:0:
+352,256,19923,1,0,0:0:0:0:

@@ -53,7 +53,7 @@
         <Compile Include="cHit.cs" />
         <Compile Include="cHitObject.cs" />
         <Compile Include="cObject.cs" />
-        <Compile Include="cOsu_Game.cs" />
+        <Compile Include="cOsuGame.cs" />
         <Compile Include="cScoreCalculation.cs" />
         <Compile Include="cTextureLoad.cs" />
         <Compile Include="cText.cs" />
