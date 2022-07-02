@@ -56,7 +56,7 @@ namespace osu__Game
             string[] dirs = Directory.GetDirectories("map/", "*", SearchOption.TopDirectoryOnly);
             mAudioPath = mBeatmap.ReadFile(mHitObjects);
             var reader = new Mp3FileReader($"map/{mAudioPath}");
-            var waveOut = new WaveOut();
+            var waveOut = new WaveOutEvent();
             waveOut.Init(reader); 
             waveOut.Play();
         }
