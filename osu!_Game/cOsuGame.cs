@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Media;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
@@ -17,10 +16,11 @@ namespace osu__Game
         private readonly List<cText> mText = new List<cText>();
         private int mCombo;
         private int mHit;
-        private cCircle mLastObj;
         private SoundPlayer mPlayer;
         private int mScoreFinal;
         private double mTime;
+        private string mAudioPath;
+        private cBeatmap mBeatmap = new cBeatmap();
 
         public cOsuGame(GameWindow aWindow)
         {
@@ -45,8 +45,6 @@ namespace osu__Game
         private void Osu_Window_Load(object aSender, EventArgs aEvent)
         {
             mOsuWindow.CursorVisible = true;
-            mPlayer = new SoundPlayer { SoundLocation = "map/audio.wav" };
-            mPlayer.Play();
             cTextureLoad.Load("hitcirclewith.png");
             cTextureLoad.Load("approachcircle.png");
             cTextureLoad.Load("300.png");
@@ -54,28 +52,9 @@ namespace osu__Game
             cTextureLoad.Load("50.png");
             cTextureLoad.Load("miss.png");
             cTextureLoad.Load("text.png");
-            var lines = File.ReadAllLines("map/map.txt");
-            var isHitObjects = false;
-            foreach (var obj in lines)
-            {
-                if (obj == "[HitObjects]")
-                {
-                    isHitObjects = true;
-                    continue;
-                }
-
-                if (!isHitObjects) continue;
-                var a = obj.Split(',');
-                mHitObjects.Add(new cHitObject(Convert.ToInt32(a[0]), Convert.ToInt32(a[1]), Convert.ToInt32(a[2])));
-                mLastObj = new cCircle(Convert.ToInt32(a[0]), Convert.ToInt32(a[1]), Convert.ToInt32(a[2]));
-            }
-            mHitObjects.Add(new cHitObject(0, 0, mLastObj.mTime+2000));
-            mHitObjects.Reverse();
-            foreach (var obj in mHitObjects)
-            {
-                obj.SetSizeHb(4);
-                obj.SetTimeSpanHb(9);
-            }
+            mAudioPath = mBeatmap.ReadFile(mHitObjects);
+            mPlayer = new SoundPlayer { SoundLocation = $"map/{mAudioPath}" };
+            mPlayer.Play();
         }
 
         private void Osu_Window_RenderFrame(object aSender, FrameEventArgs aEvent)
@@ -163,8 +142,7 @@ namespace osu__Game
 
             mText.Clear();
             mOsuWindow.SwapBuffers();
-            var b1 = new cBeatmap((int)mLastObj.mTime + 2500);
-            if (mTime >= b1.Length) mOsuWindow.Exit();
+            if (mTime >= mBeatmap.Length+3000) mOsuWindow.Exit();
         }
     }
 }
