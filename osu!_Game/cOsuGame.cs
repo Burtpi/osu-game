@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Media;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
+using NAudio.Wave;
 
 namespace osu__Game
 {
@@ -16,7 +18,6 @@ namespace osu__Game
         private readonly List<cText> mText = new List<cText>();
         private int mCombo;
         private int mHit;
-        private SoundPlayer mPlayer;
         private int mScoreFinal;
         private double mTime;
         private string mAudioPath;
@@ -52,9 +53,12 @@ namespace osu__Game
             cTextureLoad.Load("50.png");
             cTextureLoad.Load("miss.png");
             cTextureLoad.Load("text.png");
+            string[] dirs = Directory.GetDirectories("map/", "*", SearchOption.TopDirectoryOnly);
             mAudioPath = mBeatmap.ReadFile(mHitObjects);
-            mPlayer = new SoundPlayer { SoundLocation = $"map/{mAudioPath}" };
-            mPlayer.Play();
+            var reader = new Mp3FileReader($"map/{mAudioPath}");
+            var waveOut = new WaveOut();
+            waveOut.Init(reader); 
+            waveOut.Play();
         }
 
         private void Osu_Window_RenderFrame(object aSender, FrameEventArgs aEvent)
@@ -82,7 +86,8 @@ namespace osu__Game
                 mHit = cHit.RhythmHit(mTime, deleteObj);
                 mHits.Add(new cHit(deleteObj.mX, deleteObj.mY, mTime, mHit));
                 var scorePre = new cScoreCalculation(mCombo, mHit);
-                mHitObjects[mHitObjects.Count-2].mHover = false;
+                foreach (var obj in mHitObjects)
+                    obj.mHover = false;
                 mScoreFinal = scorePre + mScoreFinal;
                 removeObject.Add(deleteObj);
                 Console.WriteLine($"Hit is now:{mHit}, Combo is now:{mCombo}, Score is now:{mScoreFinal}");

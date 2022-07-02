@@ -11,7 +11,12 @@ namespace osu__Game
         public string ReadFile(List<cHitObject> aHitObjects)
         {
             var lastObj = new cCircle(0, 0, 0);
-            var lines = File.ReadAllLines("map/map.txt");
+            string[] filePaths = Directory.GetFiles(@"map\", "*.osu", SearchOption.TopDirectoryOnly);
+            Console.WriteLine(filePaths.Length);
+            File.Move(filePaths[0], Path.ChangeExtension(filePaths[0], ".txt"));
+            filePaths = Directory.GetFiles(@"map\", "*.txt", SearchOption.TopDirectoryOnly);
+            var lines = File.ReadAllLines(filePaths[0]);
+            File.Delete(filePaths[0]);
             var isHitObjects = false;
             var audioPath = "";
             foreach (var obj in lines)
