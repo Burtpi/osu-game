@@ -55,6 +55,7 @@
         <Compile Include="cObject.cs" />
         <Compile Include="cOsuGame.cs" />
         <Compile Include="cScoreCalculation.cs" />
+        <Compile Include="cSlider.cs" />
         <Compile Include="cTextureLoad.cs" />
         <Compile Include="cText.cs" />
         <Compile Include="Program.cs" />
