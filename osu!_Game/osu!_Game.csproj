@@ -9,6 +9,7 @@
     <None Update="Graphics\hitcirclewith.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Remove="osu!_Game.csproj.bak" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Graphics\approachcircle.png">
