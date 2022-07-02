@@ -13,7 +13,6 @@ namespace osu__Game
             var lastObj = new cCircle(0, 0, 0);
             var lines = File.ReadAllLines("map/map.txt");
             var isHitObjects = false;
-            var isDifficulty = false;
             var audioPath = "";
             foreach (var obj in lines)
             {
@@ -31,12 +30,6 @@ namespace osu__Game
             aHitObjects.Reverse();
             foreach (var obj in lines)
             {
-                if (obj == "[Difficulty]")
-                {
-                    isDifficulty = true;
-                    continue;
-                }
-                if (!isDifficulty) continue;
                 foreach (var hitObject in aHitObjects)
                 {
                     if(obj.Contains("CircleSize"))
@@ -44,10 +37,6 @@ namespace osu__Game
                     if(obj.Contains("ApproachRate"))
                         hitObject.SetTimeSpanHb(obj[13] - '0');
                 }
-            }
-
-            foreach (var obj in lines)
-            {
                 if (obj.Contains("AudioFilename"))
                 {
                     audioPath = obj.Split(' ')[1];
