@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Media;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
@@ -12,16 +11,16 @@ namespace osu__Game
 {
     internal class cOsuGame
     {
-        private readonly List<cHitObject> mHitObjects = new List<cHitObject>();
-        private readonly List<cHit> mHits = new List<cHit>();
+        private readonly List<cHitObject> mHitObjects = new();
+        private readonly List<cHit> mHits = new();
         private readonly GameWindow mOsuWindow;
-        private readonly List<cText> mText = new List<cText>();
+        private readonly List<cText> mText = new();
         private int mCombo;
         private int mHit;
         private int mScoreFinal;
         private double mTime;
         private string mAudioPath;
-        private cBeatmap mBeatmap = new cBeatmap();
+        private cBeatmap mBeatmap = new();
 
         public cOsuGame(GameWindow aWindow)
         {
@@ -46,6 +45,8 @@ namespace osu__Game
         private void Osu_Window_Load(object aSender, EventArgs aEvent)
         {
             mOsuWindow.CursorVisible = true;
+            var mapNumber = 0;
+            var intValue = false;
             cTextureLoad.Load("hitcirclewith.png");
             cTextureLoad.Load("approachcircle.png");
             cTextureLoad.Load("300.png");
@@ -53,9 +54,13 @@ namespace osu__Game
             cTextureLoad.Load("50.png");
             cTextureLoad.Load("miss.png");
             cTextureLoad.Load("text.png");
-            string[] dirs = Directory.GetDirectories("map/", "*", SearchOption.TopDirectoryOnly);
-            mAudioPath = mBeatmap.ReadFile(mHitObjects);
-            var reader = new Mp3FileReader($"map/{mAudioPath}");
+            var dirs = Directory.GetDirectories("map/", "*", SearchOption.TopDirectoryOnly);
+            for (var i = 0; i < dirs.Length; i++)
+                Console.WriteLine($"{i+1}. {dirs[i][(dirs[i].Split()[0].Length + 1)..]}");
+            while (mapNumber > dirs.Length || mapNumber <= 0 || intValue == false)
+                intValue = int.TryParse(Console.ReadLine(), out mapNumber);
+            mAudioPath = mBeatmap.ReadFile(mHitObjects, mapNumber);
+            var reader = new Mp3FileReader($"{dirs[mapNumber-1]}/{mAudioPath}");
             var waveOut = new WaveOutEvent();
             waveOut.Init(reader); 
             waveOut.Play();

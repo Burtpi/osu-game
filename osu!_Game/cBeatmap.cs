@@ -8,13 +8,20 @@ namespace osu__Game
     {
         public double Length;
 
-        public string ReadFile(List<cHitObject> aHitObjects)
+        public string ReadFile(List<cHitObject> aHitObjects, int aMapId)
         {
+            var mapNumber = 0;
+            var intValue = false;
             var lastObj = new cCircle(0, 0, 0);
-            string[] filePaths = Directory.GetFiles(@"map\", "*.osu", SearchOption.TopDirectoryOnly);
+            var dirs = Directory.GetDirectories("map/", "*", SearchOption.TopDirectoryOnly);
+            var filePaths = Directory.GetFiles(dirs[aMapId-1], "*.osu", SearchOption.TopDirectoryOnly);
+            for (var i = 0; i < filePaths.Length; i++)
+                Console.WriteLine($"{i+1}. {filePaths[i][(filePaths[i].Split()[0].Length + 1)..]}");
+            while (mapNumber > filePaths.Length || mapNumber <= 0 || intValue == false)
+                intValue = int.TryParse(Console.ReadLine(), out mapNumber);
+            File.Move(filePaths[mapNumber-1], Path.ChangeExtension(filePaths[mapNumber-1], ".txt"));
+            filePaths = Directory.GetFiles(dirs[aMapId-1], "*.txt", SearchOption.TopDirectoryOnly);
             Console.WriteLine(filePaths.Length);
-            File.Move(filePaths[0], Path.ChangeExtension(filePaths[0], ".txt"));
-            filePaths = Directory.GetFiles(@"map\", "*.txt", SearchOption.TopDirectoryOnly);
             var lines = File.ReadAllLines(filePaths[0]);
             File.Delete(filePaths[0]);
             var isHitObjects = false;
@@ -42,10 +49,9 @@ namespace osu__Game
                     if(obj.Contains("ApproachRate"))
                         hitObject.SetTimeSpanHb(obj[13] - '0');
                 }
+
                 if (obj.Contains("AudioFilename"))
-                {
-                    audioPath = obj.Split(' ')[1];
-                }
+                    audioPath = obj[(obj.Split()[0].Length + 1)..];
             }
 
             Length += lastObj.mTime + 2000;
