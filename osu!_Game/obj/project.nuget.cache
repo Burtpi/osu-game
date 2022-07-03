@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "dgSpecHash": "5c7Gp6a77bTAcoyon5aoFmbs5KO4SjMk+GiEJw8RlQmAF+QlgtBBAij/PVQCmxaTaYW3OsWwUezmGeIuTwLuHg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Bartpi\\Desktop\\osu\\osu-game\\osu!_Game\\osu!_Game.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Bartpi\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\Bartpi\\.nuget\\packages\\microsoft.dotnet.upgradeassistant.extensions.default.analyzers\\0.3.330701\\microsoft.dotnet.upgradeassistant.extensions.default.analyzers.0.3.330701.nupkg.sha512",
+    "C:\\Users\\Bartpi\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\Bartpi\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\Bartpi\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0-preview.5.22301.12\\microsoft.win32.systemevents.7.0.0-preview.5.22301.12.nupkg.sha512",
+    "C:\\Users\\Bartpi\\.nuget\\packages\\naudio\\2.1.0\\naudio.2.1.0.nupkg.sha512",
+    "C:\\Users\\Bartpi\\.nuget\\packages\\naudio.asio\\2.1.0\\naudio.asio.2.1.0.nupkg.sha512",
+    "C:\\Users\\Bartpi\\.nuget\\packages\\naudio.core\\2.1.0\\naudio.core.2.1.0.nupkg.sha512",
+    "C:\\Users\\Bartpi\\.nuget\\packages\\naudio.midi\\2.1.0\\naudio.midi.2.1.0.nupkg.sha512",
+    "C:\\Users\\Bartpi\\.nuget\\packages\\naudio.wasapi\\2.1.0\\naudio.wasapi.2.1.0.nupkg.sha512",
+    "C:\\Users\\Bartpi\\.nuget\\packages\\naudio.winmm\\2.1.0\\naudio.winmm.2.1.0.nupkg.sha512",
+    "C:\\Users\\Bartpi\\.nuget\\packages\\ppy.opentk\\3.0.13\\ppy.opentk.3.0.13.nupkg.sha512",
+    "C:\\Users\\Bartpi\\.nuget\\packages\\system.data.datasetextensions\\4.5.0\\system.data.datasetextensions.4.5.0.nupkg.sha512",
+    "C:\\Users\\Bartpi\\.nuget\\packages\\system.drawing.common\\7.0.0-preview.5.22301.12\\system.drawing.common.7.0.0-preview.5.22301.12.nupkg.sha512",
+    "C:\\Users\\Bartpi\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
+    "C:\\Users\\Bartpi\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'ppy.OpenTK 3.0.13' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "ppy.OpenTK",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
+}
