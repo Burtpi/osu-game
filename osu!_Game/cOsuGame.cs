@@ -55,6 +55,7 @@ internal class cOsuGame
         cTextureLoad.Load("50.png");
         cTextureLoad.Load("miss.png");
         cTextureLoad.Load("text.png");
+        cTextureLoad.Load("sliderbody.png");
         var dirs = Directory.GetDirectories("map/", "*", SearchOption.TopDirectoryOnly);
         for (var i = 0; i < dirs.Length; i++)
             Console.WriteLine($"{i + 1}. {dirs[i][(dirs[i].Split()[0].Length + 1)..]}");
@@ -84,7 +85,6 @@ internal class cOsuGame
             hitObject.CreateObject(aEvent.Time);
             renderObject.Add(hitObject);
         }
-
         var deleteObj = mHitObjects[^1];
         if (deleteObj.mHover)
         {
@@ -98,7 +98,6 @@ internal class cOsuGame
             removeObject.Add(deleteObj);
             Console.WriteLine($"Hit is now:{mHit}, Combo is now:{mCombo}, Score is now:{mScoreFinal}");
         }
-        else if (mTime >= deleteObj.mTime)
         {
             mHits.Add(new cHit(deleteObj.mX, deleteObj.mY, mTime, 0));
             removeObject.Add(deleteObj);
@@ -136,7 +135,6 @@ internal class cOsuGame
         foreach (var obj in removeObject)
         {
             obj.Dispose();
-
             switch (obj)
             {
                 case cHitObject hitObject:
