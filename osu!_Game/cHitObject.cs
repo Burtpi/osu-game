@@ -15,10 +15,10 @@ public class cHitObject : cObject
         mTime = aTime;
     }
 
-    public cHitObject(float aX, float aY, double aTime, float aXEnd, float aYEnd, double aTimeEnd)
+    public cHitObject(float aX, float aY, double aTime, float aXEnd, float aYEnd)
     {
         mSlider = new cSlider((aX + 192) * 1.7857f, (aY + 96) * 1.7578125f, aTime, (aXEnd + 192) * 1.7857f,
-            (aYEnd + 96) * 1.7578125f, aTimeEnd);
+            (aYEnd + 96) * 1.7578125f);
         mApproachCircle = new cApproachCircle((aX + 192) * 1.7857f, (aY + 96) * 1.7578125f, aTime);
         mX = (aX + 192) * 1.7857f;
         mY = (aY + 96) * 1.7578125f;
@@ -41,6 +41,12 @@ public class cHitObject : cObject
         mCircle.SetTimeSpan(aApproachRate);
         mApproachCircle.SetTimeSpan(aApproachRate);
         SetTimeSpan(aApproachRate);
+    }
+    
+    public void SetOverallDiffHb(float aOverallDifficulty)
+    {
+        mCircle.SetOverallDiff(aOverallDifficulty);
+        SetOverallDiff(aOverallDifficulty);
     }
 
     public void CreateObject(double aTime)

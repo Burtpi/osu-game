@@ -21,11 +21,20 @@ public class cHit : cObject
 
     public static int RhythmHit(double aTime, cObject aCircle)
     {
-        if (aTime >= aCircle.mTime - 100 && aTime <= aCircle.mTime)
+        // if (aTime >= aCircle.mTime - 100 && aTime <= aCircle.mTime)
+        //     return Hit300;
+        // if (aTime < aCircle.mTime - 100 && aTime >= aCircle.mTime - 200)
+        //     return Hit100;
+        // if (aTime < aCircle.mTime - 200 && aTime >= aCircle.mTime - aCircle.mTimeSpan)
+        //     return Hit50;
+        if (aTime >= aCircle.mTime - (80 - 6 * aCircle.mOverallDiff) &&
+            aTime <= aCircle.mTime + (80 - 6 * aCircle.mOverallDiff))
             return Hit300;
-        if (aTime < aCircle.mTime - 100 && aTime >= aCircle.mTime - 200)
+        if (aTime >= aCircle.mTime - (140 - 8 * aCircle.mOverallDiff) &&
+            aTime <= aCircle.mTime + (140 - 8 * aCircle.mOverallDiff))
             return Hit100;
-        if (aTime < aCircle.mTime - 200 && aTime >= aCircle.mTime - aCircle.mTimeSpan)
+        if (aTime >= aCircle.mTime - (200 - 10 * aCircle.mOverallDiff) &&
+            aTime <= aCircle.mTime + (200 - 10 * aCircle.mOverallDiff))
             return Hit50;
         return 0;
     }

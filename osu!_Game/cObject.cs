@@ -16,6 +16,7 @@ public abstract class cObject : IDisposable
     public bool mVisible { get; set; }
     public bool mHover { get; set; }
     public float mSize { get; private set; }
+    public float mOverallDiff { get; private set; }
     public double mTimeSpan { get; private set; }
     protected int mVertCount { get; private set; }
 
@@ -43,6 +44,11 @@ public abstract class cObject : IDisposable
             var v = 1200 - 150 * (aApproachRate - 5);
             mTimeSpan = v;
         }
+    }
+
+    public void SetOverallDiff(float aOverallDifficulty)
+    {
+        mOverallDiff = aOverallDifficulty;
     }
 
     public static int operator -(cObject aObject)
@@ -95,7 +101,6 @@ public abstract class cObject : IDisposable
 
     private void Dispose(bool aShouldDispose)
     {
-        Console.WriteLine(mIsCreated);
         if (!aShouldDispose) return;
         if (!mIsCreated) return;
         GL.DeleteBuffer(Vbo);

@@ -47,7 +47,9 @@ public class cBeatmap
                 if (obj.Contains("CircleSize"))
                     hitObject.SetSizeHb(obj[11] - '0');
                 if (obj.Contains("ApproachRate"))
-                    hitObject.SetTimeSpanHb(obj[13] - '0');
+                    hitObject.SetTimeSpanHb(obj[13]- '0');
+                if (obj.Contains("OverallDifficulty"))
+                    hitObject.SetOverallDiffHb(float.Parse(obj[18..]));
             }
 
             if (obj.Contains("AudioFilename"))

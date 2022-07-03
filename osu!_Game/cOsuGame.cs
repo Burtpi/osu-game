@@ -98,6 +98,7 @@ internal class cOsuGame
             removeObject.Add(deleteObj);
             Console.WriteLine($"Hit is now:{mHit}, Combo is now:{mCombo}, Score is now:{mScoreFinal}");
         }
+        else if (mTime >= deleteObj.mTime + (200 - 10 * deleteObj.mOverallDiff))
         {
             mHits.Add(new cHit(deleteObj.mX, deleteObj.mY, mTime, 0));
             removeObject.Add(deleteObj);
