@@ -19,9 +19,8 @@ namespace osu__Game
                 Console.WriteLine($"{i+1}. {filePaths[i][(filePaths[i].Split()[0].Length + 1)..]}");
             while (mapNumber > filePaths.Length || mapNumber <= 0 || intValue == false)
                 intValue = int.TryParse(Console.ReadLine(), out mapNumber);
-            File.Move(filePaths[mapNumber-1], Path.ChangeExtension(filePaths[mapNumber-1], ".txt"));
+            File.Copy(filePaths[mapNumber-1], Path.ChangeExtension(filePaths[mapNumber-1], ".txt"));
             filePaths = Directory.GetFiles(dirs[aMapId-1], "*.txt", SearchOption.TopDirectoryOnly);
-            Console.WriteLine(filePaths.Length);
             var lines = File.ReadAllLines(filePaths[0]);
             File.Delete(filePaths[0]);
             var isHitObjects = false;
